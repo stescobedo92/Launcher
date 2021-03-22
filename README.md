@@ -28,7 +28,7 @@ executing this command will install the application in /usr/bin so that you can 
 ## Start project
 
 ```
-./launcher [FILE_NAME] [APP_NAME] [ICON_APP] [VERSION] [PROGRAM_TO_EXECUTE]
+./launcher FILE_NAME [--name=APP_NAME] [--icon=ICON] [--version=VERSION] [--exec=PROGRAM_TO_EXECUTE]
 ```
 
 ## Contributions
