@@ -54,11 +54,11 @@ int main(int argc, char* argv[]) {
             string remove_command = "rm " + origin;
 
             system(copy_command.c_str());
+            system(remove_command.c_str());
             
             if(fileExists(dest)){
                system(chmod_command.c_str());
-               system(chown_command.c_str());
-               system(remove_command.c_str());
+               system(chown_command.c_str());               
             }
             else{
                printf("Administrator permissions are required to be able to perform this action.\n"); 
