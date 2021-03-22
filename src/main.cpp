@@ -1,8 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <filesystem>
 
 using namespace std;
+
+bool fileExists( string const& name )
+{
+    ifstream f(name.c_str());
+    return f.good();
+}
 
 void writeLauncherFile(string fileName,string nameApp, string iconApp, string version,string progToExecute){
     ofstream launcherFile;
@@ -47,9 +54,16 @@ int main(int argc, char* argv[]) {
             string remove_command = "rm " + origin;
 
             system(copy_command.c_str());
-            system(chmod_command.c_str());
-            system(chown_command.c_str());
-            system(remove_command.c_str());
+            
+            if(fileExists(dest)){
+               system(chmod_command.c_str());
+               system(chown_command.c_str());
+               system(remove_command.c_str());
+            }
+            else{
+               printf("Administrator permissions are required to be able to perform this action.\n"); 
+            }           
+            
             free(current_dir);
         }
         else{
