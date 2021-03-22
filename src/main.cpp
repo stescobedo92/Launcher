@@ -40,10 +40,10 @@ int main(int argc, char* argv[]) {
 
             string origin =  (string)current_dir + "/" + fileName;
             string dest =  "/usr/share/applications/" + fileName;
-            string copy_command = "sudo cp " + origin.append(".desktop") + " " +dest.append(".desktop");
-            string chmod_command = "sudo chmod 644 /usr/share/applications/" + fileName.append(".desktop");
-            string chown_command = "sudo chown root:root /usr/share/applications/" + fileName;
-            string remove_command = "sudo rm " + origin;
+            string copy_command = "cp " + origin.append(".desktop") + " " +dest.append(".desktop");
+            string chmod_command = "chmod 644 /usr/share/applications/" + fileName.append(".desktop");
+            string chown_command = "chown root:root /usr/share/applications/" + fileName;
+            string remove_command = "rm " + origin;
 
             system(copy_command.c_str());
             system(chmod_command.c_str());
