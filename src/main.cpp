@@ -11,6 +11,11 @@ bool fileExists( string const& name )
     return f.good();
 }
 
+constexpr unsigned int strToint(const char* str, int h = 0)
+{
+    return !str[h] ? 5381 : (strToint(str, h+1) * 33) ^ str[h];
+}
+
 void writeLauncherFile(string fileName,string nameApp, string iconApp, string version,string progToExecute){
     ofstream launcherFile;
 
