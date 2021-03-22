@@ -18,9 +18,9 @@ and finally we execute make
 
 ~$ make
 
-Another possibility is that you download the launcher-1.0_amd.deb package and install it using the command
+Another possibility is that you download the last version of launcher package in the package folder and install it using the command
 
-~ $ sudo dpkg -i launcher-1.0_amd.deb
+~ $ sudo dpkg -i launcher-1.0.1_amd.deb
 
 executing this command will install the application in /usr/bin so that you can use it from anywhere you are.
 ```
