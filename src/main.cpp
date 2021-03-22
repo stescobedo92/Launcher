@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     char *current_dir = get_current_dir_name();
 
     if(argc < 1){
-        printf("!!!Error!!! the format is [FILE_NAME] [APP_NAME] [ICON] [VERSION] [PROGRAM_TO_EXECUTE]\n");
+        printf("!!!Error!!! the format is <FILE_NAME> [--name=APP_NAME] [--icon=ICON] [--version=VERSION] [--exec=PROGRAM_TO_EXECUTE]\n");
         return 1;
     }
     else{
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-            writeLauncherFile(fileName,nameApp,iconApp,version,progToExecute);
+            writeLauncherFile(fileName,(nameApp != "") ? nameApp : "Default",(iconApp != "") ? iconApp : "No icon to show",(version != "") ? version : "1.0",(progToExecute != "") ? progToExecute : "No program to execute");
 
             string origin =  (string)current_dir + "/" + fileName;
             string dest =  "/usr/share/applications/" + fileName;
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
             free(current_dir);
         }
         else{
-            printf("!!!Error!!! the format is [FILE_NAME] [APP_NAME] [ICON] [VERSION] [PROGRAM_TO_EXECUTE]\n");
+            printf("!!!Error!!! the format is <FILE_NAME> [--name=APP_NAME] [--icon=ICON] [--version=VERSION] [--exec=PROGRAM_TO_EXECUTE]\n");
         }
 
     }
