@@ -8,14 +8,23 @@ Surely it has happened to you many times that after installing a program you hav
 ```
 The first step is to install the g ++ compiler
 
-sudo apt-get install g++
+~$ sudo apt-get install g++
 
 then we execute the command
 
-cmake CMakeLists.txt
+~$ cmake CMakeLists.txt
 
 and finally we execute make
 
-make
+~$ make
 ```
 
+## Start project
+
+```
+./launcher [FILE_NAME] [APP_NAME] [ICON_APP] [VERSION] [PROGRAM_TO_EXECUTE]
+```
+
+## Contributions
+
+All contributions are welcome, so, feel free to play with the project and use it what however you want.
