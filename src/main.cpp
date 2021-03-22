@@ -2,6 +2,7 @@
 #include <fstream>
 #include <unistd.h>
 #include <filesystem>
+#include <vector>
 
 using namespace std;
 
@@ -37,18 +38,45 @@ void writeLauncherFile(string fileName,string nameApp, string iconApp, string ve
 int main(int argc, char* argv[]) {
     char *current_dir = get_current_dir_name();
 
-    if(argc < 5){
+    if(argc < 1){
         printf("!!!Error!!! the format is [FILE_NAME] [APP_NAME] [ICON] [VERSION] [PROGRAM_TO_EXECUTE]\n");
         return 1;
     }
     else{
-        string fileName = argv[1];
-        string nameApp  = argv[2];
-        string iconApp  = argv[3];
-        string version = argv[4];
-        string progToExecute = argv[5];
+        vector<string> listCommand;
+        for (int i = 1; i < argc; ++i) {
+            listCommand.push_back((string)argv[i]);
+        }
 
-        if(fileName != "" && nameApp != ""){
+        string fileName = argv[1];
+        string nameApp  = "";
+        string iconApp  = "";
+        string version = "";
+        string progToExecute = "";
+
+        if(fileName != ""){
+            for (auto node : listCommand){
+                string flag = node.substr(0,node.find('='));
+                string value = node.substr(node.find('=')+1);            
+                
+                //[FILE_NAME] [APP_NAME] [ICON_APP] [VERSION] [PROGRAM_TO_EXECUTE]
+                switch (strToint(flag.c_str()))
+                {
+                    case strToint("--name"):
+                        nameApp = value;
+                    break;
+                    case strToint("--icon"):
+                        iconApp = value;
+                    break;
+                    case strToint("--version"):
+                        version = value;
+                    break;
+                    case strToint("--exec"):
+                        progToExecute = value;
+                    break;
+                }
+            }
+
             writeLauncherFile(fileName,nameApp,iconApp,version,progToExecute);
 
             string origin =  (string)current_dir + "/" + fileName;
