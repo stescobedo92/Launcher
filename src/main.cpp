@@ -9,14 +9,15 @@ void writeLauncherFile(string fileName,string nameApp, string iconApp, string ve
 
     launcherFile.open(fileName + ".desktop");
     launcherFile<<"[Desktop Entry]"<<endl;
-    launcherFile<<"Version="<<""<<version<<endl;
+    launcherFile<<"Version="<<version<<endl;
+    launcherFile<<"StartupNotify=true"<<endl;
     launcherFile<<"Type=Application"<<endl;
     launcherFile<<"Terminal=False"<<endl;
-    launcherFile<<"Icon[en_US]="<<""<<iconApp<<endl;
-    launcherFile<<"Name[en_US]="<<""<<nameApp<<endl;
-    launcherFile<<"Exec="<<""<<progToExecute<<endl;
-    launcherFile<<"Name="<<""<<nameApp<<endl;
-    launcherFile<<"Icon="<<""<<iconApp<<endl;
+    launcherFile<<"Icon[en_US]="<<iconApp<<endl;
+    launcherFile<<"Name[en_US]="<<nameApp<<endl;
+    launcherFile<<"Exec="<<progToExecute<<endl;
+    launcherFile<<"Name="<<nameApp<<endl;
+    launcherFile<<"Icon="<<iconApp<<endl;
 
     launcherFile.close();
 }
